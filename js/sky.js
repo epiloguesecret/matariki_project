@@ -12,6 +12,7 @@
 }
 
 
+// edit by Chen
 $(document).ready(function(){
 	$('#snm').on('click',function(){
 		var src = $(this).attr('src');

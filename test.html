@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/pr1.css">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,500,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<body>
+
+		<center>
+			<img src="img/stars.png" />
+		</center>
+
+		<div id="container">
+			<div id="canvas">
+				<div id="nav">
+					<h2 id="title"></i> Toia Mai</h2>
+					<ul id="toggle">
+						<li>
+							<div class="active border">
+								<a href="#">Home</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">River Flow</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">Battery</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">People</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">About</a>
+								<span class="the-btn fa fa-plus"></span>
+							</div>
+							<ul>
+								<li>
+									<a href="#">Team</a>
+								</li>
+								<li>
+									<a href="#">Story</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="toggle-nav" id="bars"><i class="fa fa-bars"></i></a>
+				<br />
+				<div id="main" class="inner">
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="leftbox">
+				<a class="button building" href="#">Building</a><br /> <a class="button building" href="#">Building</a> <br /><a>
+					class="button building" href="#">Building</a> <br /><a class="button building" href="#">Building</a>
+				<p>
+					This website is use for monitoring the data of river level.
+				</p>
+				<p> buttons connect other pages</p>
+			</div>
+			
+			<div class="rightbox">decoration? boat? or the triangle</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--
+		<div class="under" >
+			<hr />
+		</div>
+		-->
+
+
+
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<!--	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>  -->
+		<script src="https://echarts.baidu.com/dist/echarts.js"></script>
+		<script src="echarts.min.js"></script>
+		<script src="echarts.js"></script>
+		<script>
+//  			var dataArr = [];
+//             $.get('https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_flow', {}, 
+//     function(response) {
+//                 dataArr = JSON.parse(response);
+//                 initEchart();
+//             });
+// 			$.ajax({
+// 				url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_flow",
+// 			}).done(function(data) {
+// 				dataArr = JSON.parse(data);
+// 				initEchart();
+// 			});
+			// var myChart = echarts.init(document.getElementById('main'));
+
+		var chart = echarts.init(document.getElementById('main'));
+		$.getJSON('https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_flow', function (data) {
+			console.log(data);
+					var option = {
+                    title: {
+                        text: 'River Flow'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['flow']
+                    },
+                    xAxis: {},
+						series: [{
+						type : 'date',
+                        data: [data[0].note,
+						data[1].note, 
+						data[2].note, 
+						data[3].note, 
+						data[4].note, 
+						data[5].note, 
+						data[6].note]
+						}],
+                    yAxis: {},
+                    series: [{
+                        name: 'flow',
+                        type: 'line',
+                        data: [
+							data[0].note,
+						data[1].note, 
+						data[2].note, 
+						data[3].note, 
+						data[4].note, 
+						data[5].note, 
+						data[6].note
+							
+							]                        
+                    }]
+                };
+
+                chart.setOption(option);
+            });    
+		</script>
+		<script src="js/jquery.min.js"></script>
+
+	</body>
+</html>

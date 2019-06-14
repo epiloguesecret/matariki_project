@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/pr1.css">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,500,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<body onload="getNowFormatDate()">
+		<div id="container">
+			<div id="canvas">
+				<div id="nav">
+					<h2 id="title"> </i> Toia Mai</h2>
+					<ul id="toggle">
+						<li>
+							<div class="active border">
+								<a href="#">Home</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">Boat</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<a href="#">About</a>
+								<span class="the-btn fa fa-plus"></span>
+							</div>
+							<ul>
+								<li>
+									<a href="#">Team</a>
+								</li>
+								<li>
+									<a href="#">Story</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				<a href="#" class="toggle-nav" id="bars"><i class="fa fa-bars"></i></a>
+				<br />
+				<div class="weather">
+									<!-- <img id="snm" src="img/sun.png" /> -->
+									<img id="cloud" onmouseover="overShow2()" onmouseout="outHide2()"src="img/wave3.png" />
+									<img id="stars" src="img/stars.png" />
+				<!-- 					<div id="snm" >
+
+									</div> -->
+								</div>
+				<div id="main" class="inner">
+					<a href="bt.html"><img id="boat" src="img/boat.png"  /></a>
+					<img onmouseover="overShow()" onmouseout="outHide()" id="boat1" src="img/wood.png" />
+					<img id="snm" src="img/sun.png" />
+				</div>
+				<!-- <div id="road">
+				</div> -->
+				<!-- <div class="river">
+
+					<!-- <img id="wave" src="img/wave2.png"  /> -->
+					<div id= "content2">
+						<p id="windsp"></p>
+					</div>
+
+					<div id= "content">
+						<p id="rlinfo"></p>
+						<p id= "riverfl"></p>
+					</div>
+				<!-- </div> -->
+
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+		<!-- <script src="https://echarts.baidu.com/dist/echarts.js"></script>
+		<script src="echarts.min.js"></script>
+		<script src="echarts.js"></script> -->
+		<script>
+	$.ajax({
+					url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_level",
+				}).done(function(data) {
+					$("#rlinfo").text("River Level: " +data[0].value + "M");
+
+				});
+		function overShow() {
+		document.getElementById("content").style.display="block";
+	}
+		function outHide() {
+		document.getElementById("content").style.display="none";
+	}
+		function overShow2() {
+		document.getElementById("content2").style.display="block";
+	}
+		function outHide2() {
+		document.getElementById("content2").style.display="none";
+	}
+	$.ajax({
+					url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_flow",
+				}).done(function(data) {
+					$("#riverfl").text("River Flow: " + data[0].value + "km/s");
+
+
+				});
+	$.ajax({
+					url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/wind_speed",
+				}).done(function(data) {
+					$("#windsp").text("Wind Speed: " + data[0].value + "km/h");
+
+				});
+
+
+//  			var dataArr = [];
+//             $.get('https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_level', {},
+//     function(response) {
+//                 dataArr = JSON.parse(response);
+//                 initEchart();
+//             });
+// 			$.ajax({
+// 				url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_level",
+// 			}).done(function(data) {
+// 				$('#wave').css('top', data[0].value);
+//
+// 			});
+			// var myChart = echarts.init(document.getElementById('main'));
+
+// 		var chart = echarts.init(document.getElementById('main'));
+// 		$.getJSON('https://matarikiwaka-functions.azurewebsites.net/api/telemetry/river_level', function (data) {
+//
+// 					var option = {
+//                     title: {
+//                         text: 'River Level'
+//                     },
+//                     tooltip: {},
+//                     legend: {
+//                         data:['level']
+//                     },
+//                     xAxis: {
+// 						boundaryGap:false,
+// 						axisLable:{
+// 							rotate:30,
+// 							interval:0,
+// 						},
+//                         data:
+// 						[
+// 						data[0].timestamp.substring(5,10),
+// 						data[12].timestamp.substring(11,16),
+// 						data[10].timestamp.substring(11,16),
+// 						data[8].timestamp.substring(11,16),
+// 						data[6].timestamp.substring(11,16),
+// 						data[4].timestamp.substring(11,16),
+// 						data[2].timestamp.substring(11,16),
+// 						data[0].timestamp.substring(11,16)
+// 						]
+// 						},
+//                     yAxis: {},
+//                     series: [{
+//                         name: 'level',
+//                         type: 'line',
+// 						areaStyle: {color:'#66e0ff'},
+// 						itemStyle:{normal:{label:{show:true}}},
+//                         data: ['',data[6].value, data[5].value, data[4].value, data[3].value, data[2].value, data[1].value, data[0].value],
+// 						color: '#66e0ff',
+// 						//symbolSize:'10';
+//                     }]
+//                 };
+//
+//                 chart.setOption(option);
+//             });
+		</script>
+		<!-- <script src="js/jquery.min.js"></script> -->
+		<script src="js/nav.js"></script>
+		<script src="js/sky.js"></script>
+		<script src="js/river.js"></script>
+
+
+	</body>
+</html>

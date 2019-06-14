@@ -12,7 +12,7 @@
 }
 
 
-// edit by Chen
+// edit by Chen OLO
 $(document).ready(function(){
 	$('#snm').on('click',function(){
 		var src = $(this).attr('src');

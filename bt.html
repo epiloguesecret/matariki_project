@@ -9,6 +9,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
 	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 
+
 	<body>
 		<div id="container">
 			<div id="canvas" >
@@ -47,10 +48,10 @@
 									<img id="snm" src="img/sun.png" />
 									<img id="cloud" src="img/wave3.png" />
 				<!-- 					<div id="snm" >
-										
+
 									</div> -->
 				</div>
-				 <div class="fullba"> 
+				 <div class="fullba">
 				 <div   class="container-1">
 					 <img id="hugeboat" src="img/boat.png"></img>
 					 <!-- 	<div id="bl" class="battery lv"></div> -->
@@ -64,8 +65,8 @@
 					 		</div>
 					 		<div id="power" class="bplv"></div>
 					 </div>
-					
-						
+
+
 				</div>
 			</div>
 		</div>
@@ -102,21 +103,21 @@
 				url: "https://matarikiwaka-functions.azurewebsites.net/api/telemetry/battery_level",
 			}).done(function(data) {
 			   $("#power").text(data[0].value + "%");
-			
+
 			});
 				// $('#bl').css('width', data[0].value);
-				
+
 // 				if($('.battery.lv').width() > 80)
 // 				{
 // 					$('.battery').css('background','#00fe00');
 // 					$('.face:nth-child(2)').css('color','#00fe00');
 // 					$('.face:nth-child(1)').css('color','#feff3d');
-// 					
+//
 // 				}else if($('.battery.lv').width() > 50){
 // 					$('.battery').css('background','#feff3d');
 // 					$('.face:nth-child(2)').css('color','#feff3d');
 // 					$('.face:nth-child(1)').css('color','#fe793d');
-// 					
+//
 // 				} else if($('.battery.lv').width() > 20)
 // 				{
 // 					$('.battery').css('background','#fe793d');
@@ -127,8 +128,8 @@
 // 					$('.face:nth-child(2)').css('color','#red');
 // 					$('.face:nth-child(1)').css('color','#grey');
 // 				}
-				
-				
+
+
 
 		</script>
 		<script src="js/jquery.min.js"></script>
